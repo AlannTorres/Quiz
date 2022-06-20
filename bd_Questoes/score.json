@@ -1,0 +1,22 @@
+{
+  "1": {
+    "codigoJogador": 1,
+    "jogador": "alan",
+    "pontos": 0
+  },
+  "2": {
+    "codigoJogador": 2,
+    "jogador": "Vitor",
+    "pontos": 1
+  },
+  "3": {
+    "codigoJogador": 3,
+    "jogador": "Alan",
+    "pontos": 1
+  },
+  "4": {
+    "codigoJogador": 4,
+    "jogador": "Alan",
+    "pontos": 0
+  }
+}
