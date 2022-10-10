@@ -1,10 +1,7 @@
-import json
-import os
-list_Questoes = {}
-score = {}
+import json, os
+list_Questoes = score = dict()
 
-
-def carregarDados():
+def CarregarDados() -> None:
     if os.path.exists('bd_Questoes/db_Questoes.json' and 'bd_Questoes/score.json'):
         with open('bd_Questoes/db_Questoes.json', 'r') as arqJson:
             global list_Questoes
@@ -12,20 +9,18 @@ def carregarDados():
         with open('bd_Questoes/score.json', 'r') as arqJson:
             global score
             score = json.load(arqJson)
-    return
 
-
-def gravarDados_Questoes():
+def GravarDados_Questoes() -> None:
     with open('bd_Questoes/db_Questoes.json', 'w+') as arqJson:
         json.dump(list_Questoes, arqJson, indent=6)
 
-
-def gravarDados_Score():
+def GravarDados_Score() -> None:
     with open('bd_Questoes/score.json', 'w+') as arqJson:
         json.dump(score, arqJson, indent=2)
 
+# --------------------------------------------------------------------------------
 
-def maiorScore():
+def maiorScore() -> str:
     player = ''
     maior = 0
     for n in score.values():
@@ -34,8 +29,7 @@ def maiorScore():
             player = n.get('jogador')
     return f'Melhor pontuação: {player} - {maior} Pontos'
 
-
-def iniciar_Game():
+def iniciar_Game() -> None:
     if len(list_Questoes) > 0:
         name = input('Digite o nome do jogador: ')
         ponto = 0
@@ -46,34 +40,32 @@ def iniciar_Game():
             print(f'C) {n.get("c")} ')
             print(f'D) {n.get("d")} ')
             print('-' * 40)
-            res = input("Qual a resposta:")
+            res = input("Qual a resposta: [A] [B] [C] [D] ").lower()
             if res == n.get('resposta'):
                 ponto += 1
         score[len(score) + 1] = {'codigoJogador': len(score) + 1, 'jogador': name, 'pontos': int(ponto)}
-        gravarDados_Score()
+        GravarDados_Score()
         print('-'*40)
         print(f'Sua prontuação foi: {ponto}')
     else:
         print('Lista vazia! ')
         pass
-    return input('-'*40 + '\nENTER para retorna ao menu:')
+    input('-'*40 + '\nENTER para retorna ao menu:')
 
-
-def adicionar_Questoes():
+def adicionar_Questoes() -> None:
     text = input("Digite o texto da questão: ")
     q1 = input("Digite a alternativa A: ")
     q2 = input("Digite a alternativa B: ")
     q3 = input("Digite a alternativa C: ")
     q4 = input("Digite a alternativa D: ")
-    res = input("Digite o qual a alternativa correta: [A] [B] [C] [D]:")
+    res = input("Digite o qual a alternativa correta: [A] [B] [C] [D] ").lower()
     bloco = {'codigo': len(list_Questoes) + 1,  'text': text, 'a': q1, 'b': q2, 'c': q3, 'd': q4, 'resposta': res}
     list_Questoes[len(list_Questoes) + 1] = bloco
-    gravarDados_Questoes()
-    return input('-'*40 + '\nENTER para retorna ao menu:')
+    GravarDados_Questoes()
+    input('-'*40 + '\nENTER para retorna ao menu:')
 
-
-def listar_Dados():
+def listar_Dados() -> None:
     print(f'Numero de questoes registradas: {len(list_Questoes)}')
     print(f'Quantidade de vezes jogadas: {len(score)}')
     print(maiorScore())
-    return input('-'*40 + '\nENTER para retorna ao menu:')
+    input('-'*40 + '\nENTER para retorna ao menu:')

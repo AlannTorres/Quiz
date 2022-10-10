@@ -1,2 +1,3 @@
-# Quiz
-Quiz em python
+# Quiz basico em python
+
+Projeto composto por Menu e Controlador com uso de JSON

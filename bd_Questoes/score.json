@@ -18,5 +18,15 @@
     "codigoJogador": 4,
     "jogador": "Alan",
     "pontos": 0
+  },
+  "5": {
+    "codigoJogador": 5,
+    "jogador": "Alan",
+    "pontos": 0
+  },
+  "6": {
+    "codigoJogador": 6,
+    "jogador": "Alan",
+    "pontos": 1
   }
 }

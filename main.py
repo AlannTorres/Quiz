@@ -1,8 +1,7 @@
 from bd_Questoes.controler import *
 
-
-def menu():
-    carregarDados()
+def Menu() -> None:
+    CarregarDados()
     while True:
         print('-'*40)
         print(maiorScore())
@@ -11,6 +10,7 @@ def menu():
         print('[2] - Adicionar questoes')
         print('[3] - Listar estatisticas')
         print('[4] - Sair')
+
         option = int(input('Escolha: '))
         if option == 1:
             iniciar_Game()
@@ -22,8 +22,6 @@ def menu():
             break
         else:
             print('Opção Invalida')
-            break
-
 
 # Iniciar
-menu()
+Menu()
